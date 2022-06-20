@@ -1,11 +1,11 @@
-﻿using System;
+﻿using practice.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using Syst
 
-namespace practice
+namespace practice.Models
 {
     internal class Manager : Company, IPerson
     {
@@ -24,7 +24,7 @@ namespace practice
 
         public void FindFault(Cashier cashier)
         {
-            if(new Random().Next(100) <= 40)
+            if (new Random().Next(100) <= 40)
             {
                 cashier.Strikes++;
             }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace practice
+namespace practice.Models
 {
     internal class Program
     {
@@ -14,7 +14,7 @@ namespace practice
 
             Interract(cashier1, customer1);
             bool done = false;
-            bool customerSatisfied= CheckSatisfied(cashier1);
+            bool customerSatisfied = CheckSatisfied(cashier1);
 
             while (customerSatisfied && !done)
             {
@@ -43,7 +43,7 @@ namespace practice
 
 
         }
-    
+
         public static void GetManager(Manager manager, Cashier cashier)
         {
             manager.Greet();
@@ -70,7 +70,7 @@ namespace practice
         {
             var products = Enum.GetValues(typeof(Products));
             Console.WriteLine($"{cashier.Name}: Our available products include:");
-            foreach(int product in products)
+            foreach (int product in products)
             {
                 Console.WriteLine($"{Enum.GetName(typeof(Products), product)}: ${product:N2}");
             }
@@ -80,7 +80,7 @@ namespace practice
 
             if (Enum.IsDefined(typeof(Products), reply))
             {
-                decimal price = (decimal)(int)Enum.Parse(typeof(Products), reply);
+                decimal price = (int)Enum.Parse(typeof(Products), reply);
                 Console.WriteLine($"{cashier.Name}: Okay, {reply} costs ${price:N2}. Do you want it?");
                 Console.Write("You (Y/N): ");
                 string reply2 = Console.ReadLine();
@@ -93,7 +93,7 @@ namespace practice
                     {
                         customer.Buy(price);
                         cashier.Sell();
-                    }                        
+                    }
                     else
                         Console.WriteLine($"{cashier.Name}: Sorry your money is not enough to make this purchase.");
                 }
@@ -106,7 +106,7 @@ namespace practice
             Console.Write($"You (Y/N): ");
             string reply3 = Console.ReadLine();
 
-            if(reply3 == "N")
+            if (reply3 == "N")
             {
                 return false;
             }

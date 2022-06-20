@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace practice
+namespace practice.Models
 {
-    internal interface IPerson
+    public abstract class Company
     {
-        void Greet();
+        public abstract string CompanyName { get; set; }
     }
 }
