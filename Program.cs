@@ -1,6 +1,7 @@
-﻿using System;
+﻿using practice.Models;
+using System;
 
-namespace practice.Models
+namespace practice
 {
     internal class Program
     {
