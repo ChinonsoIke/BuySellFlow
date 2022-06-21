@@ -24,6 +24,7 @@ namespace practice.Models
 
         public void FindFault(Cashier cashier)
         {
+            // randomly decide if cashier is guilty
             if (new Random().Next(100) <= 40)
             {
                 cashier.Strikes++;
@@ -32,6 +33,7 @@ namespace practice.Models
 
         public void Fire(Cashier cashier)
         {
+            // sack cashier
             cashier = null;
         }
     }

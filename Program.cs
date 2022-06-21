@@ -19,6 +19,7 @@ namespace practice
 
             while (customerSatisfied && !done)
             {
+                // keep interracting till customer is done or unsatisfied
                 Console.WriteLine($"{cashier1.Name}: Would you like to make another purchase?");
                 Console.Write($"You (Y/N): ");
 
@@ -47,6 +48,7 @@ namespace practice
 
         public static void GetManager(Manager manager, Cashier cashier)
         {
+            // handle displeased customer
             manager.Greet();
             Console.WriteLine($"{manager.Name}: I'm sorry you had a bad experience with us. Was this due to something the cashier did?");
             Console.Write($"You (Y/N): ");
@@ -56,19 +58,21 @@ namespace practice
             {
                 Console.WriteLine($"{manager.Name}: Thank you for your feedback. I am going to look into this issue.");
                 manager.FindFault(cashier);
+                System.Threading.Thread.Sleep(3000);
+
                 if (cashier.Strikes == 2)
                 {
-                    System.Threading.Thread.Sleep(3000);
                     Console.WriteLine();
                     Console.WriteLine($"{manager.Name}: This is the 2nd time we have found {cashier.Name} guilty of mistreating a customer. He has therefore been let go.");
                     manager.Fire(cashier);
                 }
-                Console.WriteLine("We are sorry you had to experience that. Have a nice day.");
             }
+            Console.WriteLine("We are sorry you had to experience that. Have a nice day.");
         }
 
         public static void Interract(Cashier cashier, Customer customer)
         {
+            // handle cashier-customer exchange
             var products = Enum.GetValues(typeof(Products));
             Console.WriteLine($"{cashier.Name}: Our available products include:");
             foreach (int product in products)
@@ -88,6 +92,7 @@ namespace practice
 
                 if (reply2 == "Y")
                 {
+                    // process payment for about 2 seconds
                     System.Threading.Thread.Sleep(2000);
                     Console.WriteLine();
                     if (customer.Budget >= price)
@@ -103,6 +108,7 @@ namespace practice
 
         public static bool CheckSatisfied(Cashier cashier)
         {
+            // check if customer is pleased with service
             Console.WriteLine($"{cashier.Name}: Thank you for coming in. Are you satisfied with our service?");
             Console.Write($"You (Y/N): ");
             string reply3 = Console.ReadLine();
